@@ -23,21 +23,21 @@ const columns = [
   {
     label: 'Name',
     key: 'name',
-    Render: element => <span className="d">{element.name}</span>
+    Render: element => <span>{element.name}</span>
   },
   { label: 'Age', key: 'age' },
   {
     label: 'Actions',
     key: 'actions',
     Render: element => (
-      <span className="d" onClick={() => console.log(element)}>
+      <span onClick={() => console.log(element)}>
         View
       </span>
     )
   }
 ]
 
-const data = [{ name: 'Daniela Merlo', Age: 22 }]
+const data = [{ name: 'Daniela Merlo', age: 22 }]
 
 class Example extends Component {
   render() {
