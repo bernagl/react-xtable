@@ -45,7 +45,6 @@ class Example extends Component {
       <RTable
         data={data}
         columns={columns}
-        data={this.state.data}
         Loading={() => 'Loading'}
         pagination={10}
         searchPlaceholder="Search"
