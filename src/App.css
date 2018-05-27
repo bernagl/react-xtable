@@ -1,0 +1,219 @@
+/* Datatable */
+
+.App {
+  max-width: 860px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#btable table {
+  border-collapse: collapse;
+  width: 100%;
+  animation: fade-in;
+  animation-duration: 1s;
+}
+
+#btable th,
+td {
+  padding: 15px;
+  text-align: left;
+}
+
+#btable table,
+th,
+td {
+  border-bottom: 1px solid#e8e8e8;
+}
+
+#btable {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.global-search-input {
+  /* float: right; */
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  animation: fade-in;
+  animation-duration: 1s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Styles */
+
+#btable .table-header {
+  background: #fafafa;
+  padding: 10px;
+  position: relative;
+}
+
+#btable .table-header .title {
+  margin: 0px;
+}
+
+#btable thead tr {
+  background: #fafafa;
+}
+
+#btable .row {
+  cursor: pointer;
+}
+
+#btable .row:hover {
+  background: #e6f7ff;
+  transition: .3s;
+}
+
+#btable tr:nth-child(even) {
+  background-color: #f7fbff;
+}
+
+#btable input {
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+#btable input:focus {
+  padding: 5px;
+  outline: 2px solid #e6f7ff;
+}
+
+#btable .header-container {
+  position: relative;
+  padding: 10px;
+  padding-right: 20px;
+  margin-right: 10px;
+}
+
+#btable .caret {
+  z-index: 99;
+  position: absolute;
+  height: 0;
+  width: 0;
+  right: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  cursor: pointer;
+}
+
+#btable .caret.caret-up.active {
+  border-bottom: 5px solid #5298dc !important;
+  animation: caret-active;
+  animation-duration: 1s;
+}
+
+#btable .caret.caret-down.active {
+  border-top: 5px solid #5298dc !important;
+  animation: caret-active;
+  animation-duration: 1s;
+}
+
+#btable .caret-up {
+  top: calc(50% - 10px);
+  border-bottom: 5px solid #cccaca;
+}
+
+#btable .caret-down {
+  position: absolute;
+  top: 50%;
+  border-top: 5px solid #cccaca;
+}
+
+#btable thead th {
+  padding: 0px;
+  margin-right: 5px;
+}
+
+table {
+  table-layout: fixed;
+  width: 100px;
+}
+
+#btable .pagination {
+  text-align: center;
+  padding: 10px;
+  background: #fafafa;
+}
+
+#btable .pagination input {
+  border: 1px solid #e8e8e8;
+  margin-left: 10px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#btable .pagination .pagination-total {
+  border-radius: 5px;
+  padding: 2px 10px;
+  cursor: pointer;
+}
+
+#btable .pagination button {
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#btable .pagination button:focus {
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  padding: 5px 10px;
+  outline: none;
+  animation: pagination-btn-animation;
+  animation-duration: 1s;
+}
+
+#btable .pagination button:active {
+  animation: pagination-btn-animation;
+  animation-duration: 1s;
+}
+
+#btable .empty-table {
+  padding: 40px;
+  position: relative;
+  text-align: center;
+}
+
+#btable .loading {
+  padding: 20px;
+  text-align: center;
+}
+
+@keyframes pagination-btn-animation {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes caret-active-up {
+  from {
+    transform: scale(1.5)
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes caret-active-down {
+  from {
+    transform: scale(1.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}

@@ -12,19 +12,68 @@ npm install --save react-xtable
 
 ## Usage
 
+---
+
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-xtable'
+import Rtable from 'react-xtable'
+
+const columns = [
+  {
+    label: 'Name',
+    key: 'name',
+    Render: element => <span className="d">{element.name}</span>
+  },
+  { label: 'Age', key: 'age' },
+  {
+    label: 'Actions',
+    key: 'actions',
+    Render: element => (
+      <span className="d" onClick={() => console.log(element)}>
+        View
+      </span>
+    )
+  }
+]
+
+const data = [{ name: 'Daniela Merlo', Age: 22 }]
 
 class Example extends Component {
-  render () {
+  render() {
     return (
-      <MyComponent />
+      <RTable
+        data={data}
+        columns={columns}
+        data={this.state.data}
+        Loading={() => 'Loading'}
+        pagination={10}
+        searchPlaceholder="Search"
+        emptyText={() => 'No data found :('}
+      />
     )
   }
 }
 ```
+
+## Props
+
+| Prop              | Type     | Default | Desctiption                 |
+| ----------------- | -------- | ------- | --------------------------- |
+| data              | Array    | []      | Data to display             |
+| columns           | Array    | []      | Table columns               |
+| Loading           | Function |         | Loading indicator           |
+| Pagination        | Number   | 50      | Number of elements per page |
+| EmptyText         | Function |         | Text to show when no data   |
+| searchPlaceholder | Text     | search  | Search input placeholder    |
+
+## Column Options
+
+| Property | Type     | Description                                                                           |
+| -------- | -------- | ------------------------------------------------------------------------------------- |
+| label    | String   | Column title                                                                          |
+| key      | String   | Object key                                                                            |
+| Render   | Function | Component to render instead of key value. Returns component with the selected element |
 
 ## License
 
