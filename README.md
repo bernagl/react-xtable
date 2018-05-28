@@ -57,7 +57,7 @@ class Example extends Component {
 
 ## Props
 
-| Prop              | Type     | Default | Desctiption                 |
+| Prop              | Type     | Default | Description                 |
 | ----------------- | -------- | ------- | --------------------------- |
 | data              | Array    | []      | Data to display             |
 | columns           | Array    | []      | Table columns               |
