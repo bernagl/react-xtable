@@ -212,7 +212,7 @@ Datatable.defaultProps = {
   EmptyText: () => <span>No data found</span>,
   Loading: () => <span>Loading</span>,
   pagination: 50,
-  searchPlaceholder: 'Searchsss',
+  searchPlaceholder: 'Search',
   title: 'Datatable'
 }
 
