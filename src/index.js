@@ -126,47 +126,49 @@ export default class Datatable extends Component {
             placeholder={searchPlaceholder}
           />
         </div>
-        <table>
-          <thead>
-            <tr>
-              {columns.map((col, i) => (
-                <th onClick={() => this.setSelectedCol(i)} key={i}>
-                  <div className="header-container">
-                    <span>{col.label}</span>
-                    <br />
-                    {!col.Render && (
-                      <React.Fragment>
-                        <span
-                          onClick={() => this.sortColumn(col, 'desc', i)}
-                          className={`caret caret-up ${i === selectedCol &&
-                            order === 'desc' &&
-                            'active'} `}
-                        />
-                        <span
-                          onClick={() => this.sortColumn(col, 'asc', i)}
-                          className={`caret caret-down ${i === selectedCol &&
-                            order === 'asc' &&
-                            'active'}`}
-                        />
-                      </React.Fragment>
-                    )}
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {currentData.map((element, i) => (
-              <tr className="row" key={i}>
-                {columns.map(({ key, Render }, j) => (
-                  <td key={j}>
-                    {Render ? <Render {...element} /> : element[key]}
-                  </td>
+        <div className="table-container">
+          <table>
+            <thead>
+              <tr>
+                {columns.map((col, i) => (
+                  <th onClick={() => this.setSelectedCol(i)} key={i}>
+                    <div className="header-container">
+                      <span>{col.label}</span>
+                      <br />
+                      {!col.Render && (
+                        <React.Fragment>
+                          <span
+                            onClick={() => this.sortColumn(col, 'desc', i)}
+                            className={`caret caret-up ${i === selectedCol &&
+                              order === 'desc' &&
+                              'active'} `}
+                          />
+                          <span
+                            onClick={() => this.sortColumn(col, 'asc', i)}
+                            className={`caret caret-down ${i === selectedCol &&
+                              order === 'asc' &&
+                              'active'}`}
+                          />
+                        </React.Fragment>
+                      )}
+                    </div>
+                  </th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {currentData.map((element, i) => (
+                <tr className="row" key={i}>
+                  {columns.map(({ key, Render }, j) => (
+                    <td key={j}>
+                      {Render ? <Render {...element} /> : element[key]}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <div className="footer">
           {currentData.length <= 0 &&
             !Loading && (

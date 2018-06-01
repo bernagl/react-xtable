@@ -1,12 +1,13 @@
 /* Datatable */
 
+/* 
 .App {
   max-width: 860px;
   margin: auto;
   display: flex;
   justify-content: center;
   align-content: center;
-}
+} */
 
 #btable table {
   border-collapse: collapse;
@@ -134,9 +135,13 @@ td {
   margin-right: 5px;
 }
 
-table {
+#btable table {
   table-layout: fixed;
-  width: 100px;
+  width: 100%;
+}
+
+#btable .table-container {
+  overflow-x: auto;
 }
 
 #btable .pagination {
