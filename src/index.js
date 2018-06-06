@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './rxdt.css'
+import './styles.css'
 
 export default class Datatable extends Component {
   state = {
@@ -158,7 +158,7 @@ export default class Datatable extends Component {
             </thead>
             <tbody>
               {currentData.map((element, i) => (
-                <tr className="row" key={i}>
+                <tr className="table-row" key={i}>
                   {columns.map(({ key, Render }, j) => (
                     <td key={j}>
                       {Render ? <Render {...element} /> : element[key]}

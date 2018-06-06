@@ -18,6 +18,7 @@ npm install --save react-xtable
 import React, { Component } from 'react'
 
 import Rtable from 'react-xtable'
+import 'react-xtable/styles.css'
 
 const columns = [
   {
