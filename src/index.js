@@ -109,6 +109,9 @@ export default class Datatable extends Component {
     const {
       columns,
       data,
+      search,
+      footer,
+      header,
       EmptyText,
       Loading,
       searchPlaceholder,
@@ -117,15 +120,19 @@ export default class Datatable extends Component {
     const { currentData, currentPage, pages, selectedCol, order } = this.state
     return (
       <div id="btable">
-        <div className="table-header">
-          <h1 className="title">{title}</h1>
-          <input
-            type="text"
-            onChange={({ target: { value } }) => this.globalSearch(value)}
-            className="global-search-input"
-            placeholder={searchPlaceholder}
-          />
-        </div>
+        {header && (
+          <div className="table-header">
+            <h1 className="title">{title}</h1>
+            {search && (
+              <input
+                type="text"
+                onChange={({ target: { value } }) => this.globalSearch(value)}
+                className="global-search-input"
+                placeholder={searchPlaceholder}
+              />
+            )}
+          </div>
+        )}
         <div className="table-container">
           <table>
             <thead>
@@ -169,42 +176,44 @@ export default class Datatable extends Component {
             </tbody>
           </table>
         </div>
-        <div className="footer">
-          {currentData.length <= 0 &&
-            !Loading && (
-              <div className="empty-table">
-                <EmptyText />
-              </div>
-            )}
-          {Loading &&
-            data.length === 0 && (
-              <div className="loading">
-                <Loading />
-              </div>
-            )}
-          <div className="pagination">
-            <button
-              onClick={() => this.handlePaginate(currentPage - 1)}
-              disabled={currentPage - 1 === 0 ? true : false}
-            >
-              {'<'}
-            </button>
-            <input
-              type="number"
-              value={currentPage}
-              min="1"
-              max={pages}
-              onChange={({ target: { value } }) => this.handlePaginate(value)}
-            />
-            <span className="pagination-total">of {pages}</span>
-            <button
-              onClick={() => this.handlePaginate(currentPage + 1)}
-              disabled={currentPage >= pages ? true : false}
-            >
-              {'>'}
-            </button>
+        {footer && (
+          <div className="footer">
+            {currentData.length <= 0 &&
+              !Loading && (
+                <div className="empty-table">
+                  <EmptyText />
+                </div>
+              )}
+            {Loading &&
+              data.length === 0 && (
+                <div className="loading">
+                  <Loading />
+                </div>
+              )}
+            <div className="pagination">
+              <button
+                onClick={() => this.handlePaginate(currentPage - 1)}
+                disabled={currentPage - 1 === 0 ? true : false}
+              >
+                {'<'}
+              </button>
+              <input
+                type="number"
+                value={currentPage}
+                min="1"
+                max={pages}
+                onChange={({ target: { value } }) => this.handlePaginate(value)}
+              />
+              <span className="pagination-total">of {pages}</span>
+              <button
+                onClick={() => this.handlePaginate(currentPage + 1)}
+                disabled={currentPage >= pages ? true : false}
+              >
+                {'>'}
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     )
   }
@@ -214,6 +223,9 @@ Datatable.defaultProps = {
   EmptyText: () => <span>No data found</span>,
   Loading: () => <span>Loading</span>,
   pagination: 50,
+  header: true,
+  search: true,
+  footer: true,
   searchPlaceholder: 'Search',
   title: 'Datatable'
 }
@@ -221,6 +233,9 @@ Datatable.defaultProps = {
 Datatable.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
   data: PropTypes.array.isRequired,
+  header: PropTypes.bool,
+  footer: PropTypes.bool,
+  search: PropTypes.bool,
   EmptyText: PropTypes.func,
   Loading: PropTypes.func,
   searchPlaceholder: PropTypes.string,
