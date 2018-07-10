@@ -95,9 +95,7 @@ export default class Datatable extends Component {
     const start = pagination * (cp === 1 ? 0 : cp - 1)
     const end = pagination * cp
     const currentData = data.slice(start, end)
-    this.setState({ ...state, currentData, pages: p }, () =>
-      callback(data)
-    )
+    this.setState({ ...state, currentData, pages: p }, () => callback(data))
   }
 
   handlePaginate = currentPage => {
@@ -122,19 +120,17 @@ export default class Datatable extends Component {
     const { currentData, currentPage, pages, selectedCol, order } = this.state
     return (
       <div id="btable">
-        {header && (
-          <div className="table-header">
-            <h1 className="title">{title}</h1>
-            {search && (
-              <input
-                type="text"
-                onChange={({ target: { value } }) => this.globalSearch(value)}
-                className="global-search-input"
-                placeholder={searchPlaceholder}
-              />
-            )}
-          </div>
-        )}
+        <div className="table-header">
+          {title && <h1 className="title">{title}</h1>}
+          {search && (
+            <input
+              type="text"
+              onChange={({ target: { value } }) => this.globalSearch(value)}
+              className="global-search-input"
+              placeholder={searchPlaceholder}
+            />
+          )}
+        </div>
         <div className="table-container">
           <table>
             <thead>
@@ -229,7 +225,6 @@ Datatable.defaultProps = {
   search: true,
   footer: true,
   searchPlaceholder: 'Search',
-  title: 'Datatable',
   callback: data => console.log(data)
 }
 
