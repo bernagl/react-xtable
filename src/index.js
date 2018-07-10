@@ -87,7 +87,7 @@ export default class Datatable extends Component {
   }
 
   stateMiddleware = state => {
-    const { data: d, pagination } = this.props
+    const { data: d, callback, pagination } = this.props
     const { result } = this.state
     const data = state.result ? state.result : result ? result : d
     const cp = state.currentPage ? state.currentPage : 1
@@ -95,7 +95,9 @@ export default class Datatable extends Component {
     const start = pagination * (cp === 1 ? 0 : cp - 1)
     const end = pagination * cp
     const currentData = data.slice(start, end)
-    this.setState({ ...state, currentData, pages: p })
+    this.setState({ ...state, currentData, pages: p }, () =>
+      callback(data)
+    )
   }
 
   handlePaginate = currentPage => {
@@ -227,17 +229,20 @@ Datatable.defaultProps = {
   search: true,
   footer: true,
   searchPlaceholder: 'Search',
-  title: 'Datatable'
+  title: 'Datatable',
+  callback: data => console.log(data)
 }
 
 Datatable.propTypes = {
+  callback: PropTypes.func,
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
   data: PropTypes.array.isRequired,
   header: PropTypes.bool,
-  footer: PropTypes.bool,
-  search: PropTypes.bool,
   EmptyText: PropTypes.func,
+  footer: PropTypes.bool,
   Loading: PropTypes.func,
+  pagination: PropTypes.number,
+  search: PropTypes.bool,
   searchPlaceholder: PropTypes.string,
   title: PropTypes.string
 }
