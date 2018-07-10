@@ -30,11 +30,7 @@ const columns = [
   {
     label: 'Actions',
     key: 'actions',
-    Render: element => (
-      <span onClick={() => console.log(element)}>
-        View
-      </span>
-    )
+    Render: element => <span onClick={() => console.log(element)}>View</span>
   }
 ]
 
@@ -65,7 +61,9 @@ class Example extends Component {
 | Loading           | Function |         | Loading indicator           |
 | Pagination        | Number   | 50      | Number of elements per page |
 | EmptyText         | Function |         | Text to show when no data   |
+| search            | Boolean  | true    | Show/Hide search input      |
 | searchPlaceholder | Text     | search  | Search input placeholder    |
+| title             | Boolean  | true    | Show/Hide datatable title   |
 
 ## Column Options
 
